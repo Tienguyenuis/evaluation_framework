@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{%block pageTitle%}Home{%endblock%}
+
+{%block yourStyle%}
+
+{%endblock%}
+
+{% block content %}
+{%include "header.html"%}
+
+{% with messages = get_flashed_messages(with_categories=True) %}
+{% if messages %}
+<ul class="alert">
+    {% for category, message in messages %}
+    <li class="alert alert-{{category}}">{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+<form method="POST">
+<strong>Evaluate the methods {% for method in checked_methods %} {{method}} {% endfor %}
+	on the datasets {% for dataset in checked_datasets %} {{dataset}} {% endfor%} ? </strong>
+<button type="submit" class="btn btn-primary" onclick="myFunction()">Evaluate</button>
+
+<p id="confirmed"></p>
+</form>
+
+
+
+
+{%include "footer.html"%}
+{%endblock%}
+
+{%block yourScript%}
+<script>
+	function myFunction() {
+		document.getElementById("confirmed").innerHTML = "The evaluation has started. This might take a while...";
+	}
+</script>
+{%endblock%}

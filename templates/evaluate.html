@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{%block pageTitle%}Home{%endblock%}
+
+{%block yourStyle%}
+
+{%endblock%}
+
+{% block content %}
+{%include "header.html"%}
+
+{% with messages = get_flashed_messages(with_categories=True) %}
+{% if messages %}
+<ul class="alert">
+    {% for category, message in messages %}
+    <li class="alert alert-{{category}}">{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+<form method="POST">
+    Methods: <br>
+    {% for method in methods %}
+    <div class="checkbox">
+            <label><input name='embedding_methods' type="checkbox" value={{ method }}>{{ method }}</label>
+            </div>
+    {% endfor %}
+      
+    Datasets:<br>
+    {% for dataset in datasets %}
+    <div class="checkbox">
+            <label><input name='embedding_datasets' type="checkbox" value={{ dataset }}>{{ dataset }}</label>
+            </div>
+    {% endfor %}
+    <div class="form-check">
+
+    Confirmation:
+    <div class="checkbox">
+        <label><input name='confirmed' type="checkbox" value="confirmed">Confirm</label>
+        </div>
+
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{%endblock%}
+
+
+{%block yourScript%}
+
+{%endblock%}

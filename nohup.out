@@ -1,0 +1,26 @@
+ * Serving Flask app "__init__" (lazy loading)
+ * Environment: production
+   WARNING: Do not use the development server in a production environment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+Traceback (most recent call last):
+  File "app.py", line 7, in <module>
+    app.run()
+  File "/home/congttn/.local/lib/python3.6/site-packages/flask/app.py", line 943, in run
+    run_simple(host, port, self, **options)
+  File "/home/congttn/.local/lib/python3.6/site-packages/werkzeug/serving.py", line 968, in run_simple
+    s.bind(server_address)
+OSError: [Errno 98] Address already in use
+ * Serving Flask app "__init__" (lazy loading)
+ * Environment: production
+   WARNING: Do not use the development server in a production environment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+Traceback (most recent call last):
+  File "app.py", line 7, in <module>
+    app.run()
+  File "/home/congttn/.local/lib/python3.6/site-packages/flask/app.py", line 943, in run
+    run_simple(host, port, self, **options)
+  File "/home/congttn/.local/lib/python3.6/site-packages/werkzeug/serving.py", line 968, in run_simple
+    s.bind(server_address)
+OSError: [Errno 98] Address already in use

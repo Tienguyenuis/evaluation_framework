@@ -1,0 +1,122 @@
+{% extends "layout.html" %}
+{%block pageTitle%}Home{%endblock%}
+
+{%block yourStyle%}
+
+{%endblock%}
+
+{% block content %}
+{%include "header.html"%}
+
+{% with messages = get_flashed_messages(with_categories=True) %}
+{% if messages %}
+<ul class="alert">
+    {% for category, message in messages %}
+    <li class="alert alert-{{category}}">{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+<style>
+.micro_macro{
+    white-space: nowrap;
+overflow: hidden;
+width: 180px;
+height: 30px;
+text-overflow: ellipsis;
+ }
+</style>
+<strong>Link prediction undirected graphs:</strong>
+<table class=" table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>method</th>
+            {% for data in undirected_datas%}
+            <th>{{data}}</th>
+            {% endfor %}
+        </tr>
+
+    </thead>
+    <tbody> 
+        {% for method_score in undirected_score %}
+        <tr>
+            {% for item in method_score %}
+            <td>{{item}}</td>
+
+            {% endfor %}
+        </tr>
+        {% endfor %}
+
+    </tbody>
+
+</table><br>
+
+<strong>Link prediction directed graphs:</strong>
+<table class=" table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th></th>
+            {% for data in directed_datas %}
+            <th colspan="3" class ="micro_macro">{{data}}</th>
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>method</th>
+            {% for data in directed_datas %}
+            <th class="micro_macro">0%</th>
+            <th class="micro_macro">50%</th>
+            <th class="micro_macro">100%</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody> 
+        {% for method_score in directed_score %}
+        <tr>
+            {% for item in method_score %}
+            <td>{{item}}</td>
+            {% endfor %}
+        </tr>        
+        {% endfor %}
+    </tbody>
+
+</table><br>
+
+<strong>Node classification:</strong>
+<table class=" table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th></th>
+            {% for data in nc_datas %}
+            <th colspan="2" class ="micro_macro">{{data}}</th>
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>method</th>
+            {% for data in nc_datas %}
+            <th class="micro_macro">micro</th>
+            <th class="micro_macro">macro</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody> 
+        {% for method_score in nc_score %}
+        <tr>
+            {% for item in method_score %}
+            <td>{{item}}</td>
+
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    
+     </tbody>
+
+</table>
+
+
+{%include "footer.html"%}
+{%endblock%}
+
+{%block yourScript%}
+
+{%endblock%}

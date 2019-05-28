@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{%block pageTitle%}Home{%endblock%}
+
+{%block yourStyle%}
+
+{%endblock%}
+
+{% block content %}
+{%include "header.html"%}
+
+{% with messages = get_flashed_messages(with_categories=True) %}
+{% if messages %}
+<ul class="alert">
+    {% for category, message in messages %}
+    <li class="alert alert-{{category}}">{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+<form method="POST">
+    Please enter the url of your Github repository:<br>
+    {{form.url}}
+    {{form.submit}}
+</form>
+
+{%include "footer.html"%}
+{%endblock%}
+
+{%block yourScript%}
+
+{%endblock%}
